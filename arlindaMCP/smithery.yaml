@@ -1,0 +1,31 @@
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required: ["apiKey"]
+    properties:
+      apiKey:
+        type: string
+        title: "OpenWeatherMap API Key"
+        description: "Get your free API key from https://openweathermap.org/api"
+      defaultUnits:
+        type: string
+        title: "Default Temperature Units"
+        enum: ["celsius", "fahrenheit", "kelvin"]
+        default: "celsius"
+      timeout:
+        type: number
+        title: "API Timeout (seconds)"
+        default: 10
+        minimum: 5
+        maximum: 30
+  commandFunction: |-
+    (config) => ({
+      "command": "python",
+      "args": ["weather_server.py"],
+      "env": {
+        "OPENWEATHER_API_KEY": config.apiKey,
+        "DEFAULT_UNITS": config.defaultUnits || "celsius",
+        "WEATHER_API_TIMEOUT": config.timeout ? config.timeout.toString() : "10"
+      }
+    })

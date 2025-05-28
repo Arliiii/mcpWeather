@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "mcp": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@smithery/cli@latest",
+        "run",
+        "@Arliiii/mcp",
+        "--key",
+        "8414c5f1-130f-4da3-af0f-9239b7a54598",
+        "--profile",
+        "noisy-primate-zh17mp"
+      ]
+    }
+  }
+}
